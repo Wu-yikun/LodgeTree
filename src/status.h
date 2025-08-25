@@ -1,56 +1,45 @@
 #ifndef STATUS
 #define STATUS
 
-#include <string>
 #include <iostream>
+#include <string>
 
 namespace lodge {
-    enum Code {
-        kOk = 0,
-        kNotFound = 1,
-        kThreadError = 2,
-    };
+enum Code {
+  kOk = 0,
+  kNotFound = 1,
+  kThreadError = 2,
+};
 
-    struct Status {
-        Code _status;
-        
-        Status() {
-            _status = kOk;
-        }
+struct Status {
+  Code _status;
 
-        Status(const Status& p) {
-            _status = p._status;
-        }
+  Status() { _status = kOk; }
 
-        Status& operator=(const Status& p) {
-            this->_status = p._status;
+  Status(const Status& p) { _status = p._status; }
 
-            return *this;
-        }
+  Status& operator=(const Status& p) {
+    this->_status = p._status;
 
-        bool ok() {
-            return _status == kOk;
-        }
+    return *this;
+  }
 
-        std::string errMessage() {
-            switch (_status)
-            {
-            case kNotFound:
-                return std::string("Key-value pair not found!");
-            
-            case kThreadError:
-                return std::string("Multithread error!");
+  bool ok() { return _status == kOk; }
 
-            default:
-                break;
-            }
-        }
+  std::string errMessage() {
+    switch (_status) {
+      case kNotFound:
+        return std::string("Key-value pair not found!");
 
+      case kThreadError:
+        return std::string("Multithread error!");
 
-    };
+      default:
+        break;
+    }
+  }
+};
 
-
-}
-
+}  // namespace lodge
 
 #endif

@@ -148,7 +148,7 @@ struct alignas(8) InterHeader {
  private:
   InterNode *next;
   uint32_t depth;
-  uint8_t leaf_count[ISLOTS];
+  uint8_t leaf_count[ISLOTS];  // 这个数组的每个元素对应节点中的一个槽位（无论是索引部分还是缓冲区部分）
   uint8_t bitmap[ISLOTS];
   uint8_t versions[ISLOTS];
   char *leftmost_ptr;
